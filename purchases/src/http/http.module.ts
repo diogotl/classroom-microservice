@@ -3,8 +3,13 @@ import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from 'src/database/database.module';
 import { GraphQLModule } from '@nestjs/graphql'; // Import the missing 'GraphQLModule' from the appropriate package.
 import path, { join } from 'node:path';
-import { TestResolver } from './test/test.resolver';
+import { ProductsResolver } from './graphql/resolvers/products.resolver';
 import { ApolloDriver } from '@nestjs/apollo';
+import { ProductsService } from 'src/services/products.service';
+import { PurchasesResolver } from './graphql/resolvers/purchases.resolver';
+import { PurchasesService } from 'src/services/purchases.service';
+import { CustomerService } from 'src/services/customers.service';
+import { CustomersResolver } from './graphql/resolvers/customer.resolver';
 
 @Module({
     imports: [
@@ -16,7 +21,13 @@ import { ApolloDriver } from '@nestjs/apollo';
         })
     ],
     providers: [
-        TestResolver
+        ProductsResolver,
+        PurchasesResolver,
+        CustomersResolver,
+
+        ProductsService,
+        PurchasesService,
+        CustomerService
     ],
 })
 export class HttpModule { }
