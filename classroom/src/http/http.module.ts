@@ -3,7 +3,6 @@ import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from 'src/database/database.module';
 import { GraphQLModule } from '@nestjs/graphql'; // Import the missing 'GraphQLModule' from the appropriate package.
 import path, { join } from 'node:path';
-import { TestResolver } from './test/test.resolver';
 import { ApolloDriver } from '@nestjs/apollo';
 
 @Module({
@@ -16,7 +15,7 @@ import { ApolloDriver } from '@nestjs/apollo';
         })
     ],
     providers: [
-        TestResolver
+        Course
     ],
 })
 export class HttpModule { }
